@@ -8,502 +8,128 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <style>
-/* ====== CSS SAMA PERSIS DENGAN YANG ANDA BERIKAN ====== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    font-family: 'Inter', sans-serif;
-    background: #f0f2f5;
-}
-.public-container {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 40px 20px;
-}
-.public-card {
-    max-width: 700px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 24px;
-    padding: 35px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-}
-.public-card .logo {
-    text-align: center;
-    font-size: 55px;
-    color: #667eea;
-    margin-bottom: 15px;
-}
-.public-card h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 5px;
-}
-.public-card .subtitle {
-    text-align: center;
-    color: #666;
-    margin-bottom: 25px;
-    font-size: 14px;
-}
-.price-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 25px;
-    text-align: center;
-}
-.price-card .base-price {
-    font-size: 14px;
-    opacity: 0.9;
-}
-.price-card .price-value {
-    font-size: 36px;
-    font-weight: 800;
-    margin: 5px 0;
-}
-.facilities-section {
-    background: #f8f9fa;
-    border-radius: 16px;
-    padding: 20px;
-    margin: 20px 0;
-}
-.facilities-section h3 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 16px;
-}
-.facilities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 12px;
-}
-.facility-item {
-    background: white;
-    padding: 12px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: 2px solid #e0e0e0;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.facility-item.selected {
-    border-color: #4caf50;
-    background: #e8f5e9;
-}
-.facility-item i {
-    font-size: 20px;
-    width: 30px;
-    color: #667eea;
-}
-.facility-item .facility-name {
-    font-size: 13px;
-    font-weight: 600;
-}
-.facility-item .facility-price {
-    font-size: 11px;
-    color: #4caf50;
-    font-weight: 600;
-}
-.rooms-available {
-    background: #f5f5f5;
-    border-radius: 12px;
-    padding: 15px;
-    margin: 20px 0;
-}
-.room-badge {
-    display: inline-block;
-    padding: 6px 12px;
-    margin: 4px;
-    background: #e8f5e9;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #2e7d32;
-}
-.total-price {
-    background: #fff3e0;
-    border-radius: 12px;
-    padding: 15px;
-    margin: 20px 0;
-    text-align: center;
-}
-.total-price .amount {
-    font-size: 28px;
-    font-weight: 800;
-    color: #e65100;
-}
-.public-card input, .public-card select {
-    width: 100%;
-    padding: 12px 16px;
-    margin: 10px 0;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    font-size: 14px;
-}
-.public-card button {
-    width: 100%;
-    padding: 14px;
-    background: #667eea;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 10px;
-}
-.public-card button:hover {
-    background: #5a67d8;
-}
-.login-link {
-    text-align: center;
-    margin-top: 20px;
-}
-.login-link a {
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 600;
-    cursor: pointer;
-}
-.login-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-.login-card {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    width: 400px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-}
-.login-card .logo {
-    font-size: 50px;
-    color: #667eea;
-    margin-bottom: 20px;
-}
-.login-card input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-}
-.login-card button {
-    width: 100%;
-    padding: 12px;
-    background: #667eea;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 20px;
-}
-.app {
-    display: none;
-}
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 260px;
-    height: 100%;
-    background: #2d3748;
-    color: white;
-    padding: 20px 0;
-}
-.sidebar .logo {
-    text-align: center;
-    padding: 0 20px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    margin-bottom: 20px;
-}
-.sidebar .nav-item {
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.sidebar .nav-item:hover {
-    background: rgba(255,255,255,0.1);
-}
-.sidebar .nav-item.active {
-    background: rgba(255,255,255,0.2);
-    border-left: 4px solid #ffd700;
-}
-.main-content {
-    margin-left: 260px;
-    padding: 20px;
-}
-.top-bar {
-    background: white;
-    border-radius: 12px;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-.logout-btn {
-    background: #e53e3e;
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-bottom: 30px;
-}
-.stat-card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.stat-card .number {
-    font-size: 28px;
-    font-weight: 700;
-    color: #2d3748;
-}
-.stat-card i {
-    font-size: 40px;
-    color: #667eea;
-    opacity: 0.5;
-}
-.card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-.card h2 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #2d3748;
-}
-.rooms-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 12px;
-}
-.room {
-    background: #e8f5e9;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-}
-.room.occupied {
-    background: #ffebee;
-}
-.room .room-number {
-    font-size: 24px;
-    font-weight: 700;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
-}
-th {
-    background: #f5f5f5;
-}
-.badge {
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-}
-.badge-success { background: #c8e6c9; color: #2e7d32; }
-.badge-warning { background: #fff3e0; color: #e65100; }
-.btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 12px;
-    margin: 2px;
-}
-.btn-primary { background: #667eea; color: white; }
-.btn-danger { background: #e53e3e; color: white; }
-.btn-success { background: #38a169; color: white; }
-.btn-warning { background: #ed8936; color: white; }
-.hidden { display: none; }
-.toast {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #333;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    z-index: 1000;
-    animation: slideIn 0.3s ease;
-}
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-}
-.modal-content {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    max-width: 450px;
-    width: 90%;
-    position: relative;
-}
-.modal-content .close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-}
-.qris-img {
-    width: 250px;
-    height: 250px;
-    margin: 20px auto;
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #00A86B;
-    border-radius: 12px;
-}
-#qrcode {
-    width: 220px;
-    height: 220px;
-}
-.checkbox-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin: 15px 0;
-    text-align: left;
-}
-.checkbox-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-@keyframes slideIn {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-.form-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-bottom: 15px;
-}
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.form-group label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #666;
-}
-.form-group input, .form-group select {
-    padding: 8px 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-}
-.facility-card {
-    background: #f7fafc;
-    border-radius: 10px;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.facility-card .facility-name {
-    font-weight: 600;
-}
-.facility-card .facility-price {
-    color: #38a169;
-    font-weight: 600;
-}
-.facility-card button {
-    background: #e53e3e;
-    color: white;
-    border: none;
-    padding: 4px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:#f0f2f5; }
+.public-container { min-height:100vh; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); padding:40px 20px; }
+.public-card { max-width:700px; margin:0 auto; background:white; border-radius:24px; padding:35px; box-shadow:0 25px 50px rgba(0,0,0,0.25); }
+.public-card .logo { text-align:center; font-size:55px; color:#667eea; margin-bottom:15px; }
+.public-card h2 { text-align:center; color:#333; margin-bottom:5px; }
+.public-card .subtitle { text-align:center; color:#666; margin-bottom:25px; font-size:14px; }
+.price-card { background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:white; border-radius:16px; padding:20px; margin-bottom:25px; text-align:center; }
+.price-card .base-price { font-size:14px; opacity:0.9; }
+.price-card .price-value { font-size:36px; font-weight:800; margin:5px 0; }
+.facilities-section { background:#f8f9fa; border-radius:16px; padding:20px; margin:20px 0; }
+.facilities-section h3 { color:#333; margin-bottom:15px; font-size:16px; }
+.facilities-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; }
+.facility-item { background:white; padding:12px; border-radius:12px; display:flex; align-items:center; gap:10px; border:2px solid #e0e0e0; cursor:pointer; transition:0.3s; }
+.facility-item.selected { border-color:#4caf50; background:#e8f5e9; }
+.facility-item i { font-size:20px; width:30px; color:#667eea; }
+.facility-item .facility-name { font-size:13px; font-weight:600; }
+.facility-item .facility-price { font-size:11px; color:#4caf50; font-weight:600; }
+.rooms-available { background:#f5f5f5; border-radius:12px; padding:15px; margin:20px 0; }
+.room-badge { display:inline-block; padding:6px 12px; margin:4px; background:#e8f5e9; border-radius:20px; font-size:13px; font-weight:600; color:#2e7d32; }
+.total-price { background:#fff3e0; border-radius:12px; padding:15px; margin:20px 0; text-align:center; }
+.total-price .amount { font-size:28px; font-weight:800; color:#e65100; }
+.public-card input, .public-card select { width:100%; padding:12px 16px; margin:10px 0; border:2px solid #e0e0e0; border-radius:10px; font-size:14px; }
+.public-card button { width:100%; padding:14px; background:#667eea; color:white; border:none; border-radius:12px; font-size:16px; font-weight:600; cursor:pointer; margin-top:10px; }
+.public-card button:hover { background:#5a67d8; }
+.login-link { text-align:center; margin-top:20px; }
+.login-link a { color:#667eea; text-decoration:none; font-weight:600; cursor:pointer; }
+.login-container { min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); }
+.login-card { background:white; padding:40px; border-radius:20px; width:400px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+.login-card .logo { font-size:50px; color:#667eea; margin-bottom:20px; }
+.login-card input { width:100%; padding:12px; margin:10px 0; border:2px solid #e0e0e0; border-radius:10px; }
+.login-card button { width:100%; padding:12px; background:#667eea; color:white; border:none; border-radius:10px; font-size:16px; font-weight:600; cursor:pointer; margin-top:20px; }
+.app { display:none; }
+.sidebar { position:fixed; left:0; top:0; width:260px; height:100%; background:#2d3748; color:white; padding:20px 0; }
+.sidebar .logo { text-align:center; padding:0 20px 20px; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:20px; }
+.sidebar .nav-item { padding:12px 24px; display:flex; align-items:center; gap:12px; cursor:pointer; transition:0.3s; }
+.sidebar .nav-item:hover { background:rgba(255,255,255,0.1); }
+.sidebar .nav-item.active { background:rgba(255,255,255,0.2); border-left:4px solid #ffd700; }
+.main-content { margin-left:260px; padding:20px; }
+.top-bar { background:white; border-radius:12px; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+.logout-btn { background:#e53e3e; color:white; border:none; padding:8px 20px; border-radius:8px; cursor:pointer; }
+.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:30px; }
+.stat-card { background:white; border-radius:12px; padding:20px; display:flex; justify-content:space-between; align-items:center; }
+.stat-card .number { font-size:28px; font-weight:700; color:#2d3748; }
+.stat-card i { font-size:40px; color:#667eea; opacity:0.5; }
+.card { background:white; border-radius:12px; padding:20px; margin-bottom:20px; }
+.card h2 { font-size:18px; margin-bottom:15px; color:#2d3748; }
+.rooms-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:12px; }
+.room { background:#e8f5e9; border-radius:10px; padding:15px; text-align:center; cursor:pointer; }
+.room.occupied { background:#ffebee; }
+.room .room-number { font-size:24px; font-weight:700; }
+table { width:100%; border-collapse:collapse; }
+th, td { padding:10px; text-align:left; border-bottom:1px solid #e0e0e0; }
+th { background:#f5f5f5; }
+.badge { padding:4px 10px; border-radius:20px; font-size:12px; font-weight:600; }
+.badge-success { background:#c8e6c9; color:#2e7d32; }
+.badge-warning { background:#fff3e0; color:#e65100; }
+.btn { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; margin:2px; }
+.btn-primary { background:#667eea; color:white; }
+.btn-danger { background:#e53e3e; color:white; }
+.btn-success { background:#38a169; color:white; }
+.btn-warning { background:#ed8936; color:white; }
+.hidden { display:none; }
+.toast { position:fixed; bottom:20px; right:20px; background:#333; color:white; padding:12px 20px; border-radius:8px; z-index:1000; animation:slideIn 0.3s ease; }
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
+.modal-content { background:white; padding:25px; border-radius:20px; max-width:450px; width:90%; position:relative; }
+.modal-content .close { position:absolute; top:15px; right:20px; font-size:24px; cursor:pointer; }
+.qris-img { width:250px; height:250px; margin:20px auto; background:white; display:flex; justify-content:center; align-items:center; border:2px solid #00A86B; border-radius:12px; }
+#qrcode { width:220px; height:220px; }
+.checkbox-group { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:15px 0; text-align:left; }
+.checkbox-item { display:flex; align-items:center; gap:8px; }
+@keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
+.form-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; margin-bottom:15px; }
+.form-group { display:flex; flex-direction:column; gap:5px; }
+.form-group label { font-size:13px; font-weight:600; color:#666; }
+.form-group input, .form-group select { padding:8px 12px; border:2px solid #e0e0e0; border-radius:8px; }
+.facility-card { background:#f7fafc; border-radius:10px; padding:10px 15px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; }
+.facility-card .facility-name { font-weight:600; }
+.facility-card .facility-price { color:#38a169; font-weight:600; }
+.facility-card button { background:#e53e3e; color:white; border:none; padding:4px 10px; border-radius:6px; cursor:pointer; }
+
+/* ===== FOTO KAMAR ===== */
+.room-card { display:inline-block; margin:8px; padding:0; background:white; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1); width:160px; overflow:hidden; vertical-align:top; transition:transform 0.2s; }
+.room-card:hover { transform:translateY(-3px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+.room-card img { width:100%; height:120px; object-fit:cover; display:block; }
+.room-card .room-label { padding:10px; text-align:center; font-weight:700; font-size:14px; color:#333; background:white; }
+.room-card .no-image { height:120px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; color:#999; font-size:12px; }
+
+.upload-form { margin-top:15px; padding:15px; background:#f8f9fa; border-radius:12px; }
+.upload-form .form-group { margin-bottom:10px; }
+.upload-form input[type="file"] { padding:8px; border:2px dashed #ccc; border-radius:8px; width:100%; }
 </style>
 </head>
 <body>
 
-<!-- ====== HALAMAN PUBLIK ====== -->
+<!-- PUBLIC PAGE -->
 <div id="publicPage">
     <div class="public-container">
         <div class="public-card">
             <div class="logo"><i class="fas fa-home"></i></div>
             <h2>Kosan Pida</h2>
             <div class="subtitle">Kosan Nyaman & Strategis</div>
-            
             <div class="price-card">
                 <div class="base-price">Harga Dasar Sewa (Kamar + WiFi)</div>
                 <div class="price-value" id="displayBasePrice">Rp 500.000 <small>/bulan</small></div>
             </div>
-
             <div class="facilities-section">
                 <h3><i class="fas fa-plus-circle"></i> Fasilitas Tambahan (Klik untuk pilih)</h3>
                 <div id="publicFacilities" class="facilities-grid"></div>
             </div>
-
             <div class="total-price">
                 <div class="amount" id="totalAmount">Rp 500.000</div>
                 <small>Total per bulan</small>
             </div>
-
             <div class="rooms-available">
                 <strong><i class="fas fa-door-open"></i> Kamar Tersedia:</strong>
                 <div id="availableRoomsList"></div>
             </div>
-
             <h3>Form Pendaftaran</h3>
             <input type="text" id="regName" placeholder="Nama Lengkap">
             <input type="text" id="regPhone" placeholder="Nomor Telepon">
-            <select id="regRoom">
-                <option value="">Pilih Kamar</option>
-            </select>
+            <select id="regRoom"><option value="">Pilih Kamar</option></select>
             <button onclick="submitRegistration()">Kirim Pendaftaran</button>
             <div class="login-link">
                 <a onclick="showAdminLogin()">← Admin Login</a>
@@ -512,8 +138,8 @@ th {
     </div>
 </div>
 
-<!-- ====== LOGIN ADMIN ====== -->
-<div id="loginPage" class="login-container" style="display: none;">
+<!-- LOGIN ADMIN -->
+<div id="loginPage" class="login-container" style="display:none;">
     <div class="login-card">
         <div class="logo"><i class="fas fa-user-shield"></i></div>
         <h2>Admin Panel</h2>
@@ -525,7 +151,7 @@ th {
     </div>
 </div>
 
-<!-- ====== DASHBOARD ADMIN ====== -->
+<!-- DASHBOARD ADMIN -->
 <div id="mainApp" class="app">
     <div class="sidebar">
         <div class="logo"><h2>KOSAN PIDA</h2></div>
@@ -536,13 +162,11 @@ th {
         <div class="nav-item" onclick="showPage('payments')"><i class="fas fa-history"></i> Riwayat</div>
         <div class="nav-item" onclick="showPage('registrations')"><i class="fas fa-clipboard-list"></i> Pendaftaran</div>
     </div>
-
     <div class="main-content">
         <div class="top-bar">
             <h1 id="pageTitle">Dashboard</h1>
             <button class="logout-btn" onclick="doLogout()">Logout</button>
         </div>
-
         <div id="dashboardPage">
             <div class="stats-grid">
                 <div class="stat-card"><div><h3>Total Kamar</h3><div class="number" id="totalRooms">0</div></div><i class="fas fa-building"></i></div>
@@ -552,8 +176,27 @@ th {
             </div>
         </div>
 
+        <!-- ROOMS PAGE (dengan form upload) -->
         <div id="roomsPage" class="hidden">
             <div class="card"><h2>Denah Kamar</h2><div id="roomsGrid" class="rooms-grid"></div></div>
+            <div class="card" style="margin-top:20px;">
+                <h2><i class="fas fa-camera"></i> Upload Foto Kamar</h2>
+                <form id="uploadRoomImageForm" enctype="multipart/form-data" class="upload-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Pilih Kamar</label>
+                            <select id="uploadRoomNumber" required>
+                                <option value="">-- Pilih Kamar --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Pilih Foto (jpg, png)</label>
+                            <input type="file" name="image" accept="image/*" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;"><i class="fas fa-upload"></i> Upload Foto</button>
+                </form>
+            </div>
         </div>
 
         <div id="facilitiesPage" class="hidden">
@@ -567,7 +210,6 @@ th {
                 </div>
                 <button class="btn btn-primary" onclick="updateBasePrice()">Simpan Harga Dasar</button>
             </div>
-            
             <div class="card">
                 <h2><i class="fas fa-plus-circle"></i> Tambah Fasilitas Baru</h2>
                 <div class="form-row">
@@ -580,9 +222,8 @@ th {
                         <input type="number" id="newFacilityPrice" placeholder="Contoh: 150000">
                     </div>
                 </div>
-                <button class="btn btn-primary" onclick="addFacility()" style="width: 100%;"><i class="fas fa-save"></i> Tambah Fasilitas</button>
+                <button class="btn btn-primary" onclick="addFacility()" style="width:100%;"><i class="fas fa-save"></i> Tambah Fasilitas</button>
             </div>
-            
             <div class="card">
                 <h2><i class="fas fa-list"></i> Daftar Fasilitas yang Tersedia</h2>
                 <div id="facilitiesList"></div>
@@ -598,54 +239,58 @@ th {
                     <div class="form-group"><label>Kamar</label><select id="newRoom"></select></div>
                 </div>
                 <div class="form-group"><label>Fasilitas Tambahan (centang yang diinginkan)</label><div id="tenantFacilitiesCheckbox"></div></div>
-                <div style="margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 8px;"><strong>Total per Bulan: </strong><span id="previewTotalPrice">Rp 500.000</span></div>
+                <div style="margin:10px 0; padding:10px; background:#f5f5f5; border-radius:8px;"><strong>Total per Bulan: </strong><span id="previewTotalPrice">Rp 500.000</span></div>
                 <button class="btn btn-primary" onclick="addTenant()">Sewa Kamar</button>
             </div>
             <div class="card">
                 <h2>Daftar Penyewa Aktif</h2>
-                <input type="text" id="searchInput" placeholder="Cari nama..." style="padding: 8px; width: 250px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px;" onkeyup="renderTenants()">
-                <div style="overflow-x: auto;"><table id="tenantsTable"><thead><tr><th>Kamar</th><th>Nama</th><th>Fasilitas</th><th>Total/bln</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="tenantsBody"></tbody></table></div>
+                <input type="text" id="searchInput" placeholder="Cari nama..." style="padding:8px; width:250px; margin-bottom:15px; border:1px solid #ddd; border-radius:6px;" onkeyup="renderTenants()">
+                <div style="overflow-x:auto;"><table id="tenantsTable"><thead><tr><th>Kamar</th><th>Nama</th><th>Fasilitas</th><th>Total/bln</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="tenantsBody"></tbody></table></div>
             </div>
         </div>
 
         <div id="paymentsPage" class="hidden">
-            <div class="card"><h2>Riwayat Pembayaran</h2><div style="overflow-x: auto;"><table><thead><tr><th>Tanggal</th><th>Penyewa</th><th>Kamar</th><th>Bulan</th><th>Jumlah</th></tr></thead><tbody id="paymentsBody"></tbody></table></div></div>
+            <div class="card"><h2>Riwayat Pembayaran</h2><div style="overflow-x:auto;"><table><thead><tr><th>Tanggal</th><th>Penyewa</th><th>Kamar</th><th>Bulan</th><th>Jumlah</th></tr></thead><tbody id="paymentsBody"></tbody></table></div></div>
         </div>
 
         <div id="registrationsPage" class="hidden">
-            <div class="card"><h2>Pendaftaran Masuk</h2><div style="overflow-x: auto;"><table><thead><tr><th>Tanggal</th><th>Nama</th><th>Kamar</th><th>Fasilitas</th><th>Total/bln</th><th>Aksi</th></tr></thead><tbody id="registrationsBody"></tbody></table></div></div>
+            <div class="card"><h2>Pendaftaran Masuk</h2><div style="overflow-x:auto;"><table><thead><tr><th>Tanggal</th><th>Nama</th><th>Kamar</th><th>Fasilitas</th><th>Total/bln</th><th>Aksi</th></tr></thead><tbody id="registrationsBody"></tbody></table></div></div>
         </div>
     </div>
 </div>
 
-<!-- ====== MODAL ====== -->
+<!-- MODALS -->
 <div id="paymentModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closePaymentModal()">&times;</span>
         <h3>Pembayaran</h3>
         <div id="modalTenantInfo"></div>
         <div id="bulanCheckbox" class="checkbox-group"></div>
-        <div id="modalTotal" style="font-size: 20px; font-weight: bold; margin: 15px 0;"></div>
+        <div id="modalTotal" style="font-size:20px; font-weight:bold; margin:15px 0;"></div>
         <button class="btn btn-primary" onclick="prosesQRIS()">Bayar QRIS</button>
         <button class="btn btn-success" onclick="prosesCash()">Bayar Tunai</button>
     </div>
 </div>
-
 <div id="qrisModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeQrisModal()">&times;</span>
         <h3>Scan QRIS</h3>
         <div class="qris-img"><div id="qrcode"></div></div>
-        <div id="qrisAmount" style="font-size: 24px; font-weight: bold; margin: 15px 0;"></div>
+        <div id="qrisAmount" style="font-size:24px; font-weight:bold; margin:15px 0;"></div>
         <button class="btn btn-success" onclick="confirmQrisPayment()">Konfirmasi Pembayaran</button>
     </div>
 </div>
 
 <script>
-// ========== KONFIGURASI ==========
+// ========== KONFIGURASI API ==========
 const API = 'api.php';
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+let rooms = [], tenants = [], payments = [], registrations = [], facilities = [];
+let basePrice = 500000, pendingData = { tenantIdx:null, selectedMonths:[], total:0, monthlyPrice:0 };
+let currentSelectedFacilities = [];
 
 // ========== HELPER ==========
+function getCurrentMonth() { return new Date().getMonth() + 1; }
 function showToast(msg, isError = false) {
     const toast = document.createElement('div');
     toast.className = 'toast';
@@ -654,67 +299,23 @@ function showToast(msg, isError = false) {
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 3000);
 }
-
 function rupiah(n) { return 'Rp ' + n.toLocaleString('id-ID'); }
-function getCurrentMonth() { return new Date().getMonth() + 1; }
 
-// ========== VARIABEL GLOBAL ==========
-let rooms = [];
-let tenants = [];
-let payments = [];
-let registrations = [];
-let facilities = [];
-let basePrice = 500000;
-let currentSelectedFacilities = [];
-
-// ========== FUNGSI API ==========
-async function apiCall(action, method = 'GET', data = null, params = {}) {
-    let url = `${API}?action=${action}`;
-    // Tambahkan parameter GET jika ada
-    for (let key in params) {
-        url += `&${key}=${encodeURIComponent(params[key])}`;
-    }
-    const options = {
-        method: method,
-        headers: { 'Content-Type': 'application/json' }
-    };
-    if (data) options.body = JSON.stringify(data);
-    const response = await fetch(url, options);
-    if (!response.ok) {
-        const text = await response.text();
-        throw new Error(`HTTP ${response.status}: ${text}`);
-    }
-    const result = await response.json();
-    if (result.error) throw new Error(result.error);
-    return result;
-}
-
-// ========== LOAD DATA ==========
+// ========== AMBIL DATA DARI API ==========
 async function loadAllData() {
     try {
-        const data = await apiCall('getAllData');
-        basePrice = data.basePrice || 500000;
-        rooms = data.rooms || [];
-        facilities = data.facilities || [];
-        tenants = data.tenants || [];
-        payments = data.payments || [];
-        registrations = data.registrations || [];
-
-        // Jika tidak ada kamar di database, buat default 12 kamar
-        if (rooms.length === 0) {
-            // Kita perlu insert ke database melalui API? Lebih baik kita buat langsung di DB via SQL.
-            // Tapi untuk sementara, kita set rooms secara lokal dan nanti admin bisa tambah.
-            // Namun karena kita tidak punya endpoint untuk tambah kamar, kita buat manual di sini.
-            // Tapi lebih baik kita buat endpoint untuk inisialisasi.
-            // Saya sarankan jalankan SQL untuk insert 12 kamar.
-            showToast('Tidak ada kamar di database, silakan jalankan SQL insert 12 kamar', true);
-        }
-
-        // Update occupied status (jika ada ketidakcocokan)
+        const res = await fetch(`${API}?action=getAllData`);
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
+        basePrice = data.basePrice;
+        rooms = data.rooms;
+        facilities = data.facilities;
+        tenants = data.tenants;
+        payments = data.payments;
+        registrations = data.registrations;
         rooms.forEach(room => {
             room.occupied = tenants.some(t => t.room === room.number);
         });
-
         return true;
     } catch (e) {
         showToast('Gagal mengambil data: ' + e.message, true);
@@ -722,7 +323,6 @@ async function loadAllData() {
     }
 }
 
-// ========== INISIALISASI ==========
 async function initData() {
     await loadAllData();
     renderPublic();
@@ -738,14 +338,13 @@ async function initData() {
     }
 }
 
-// ========== PUBLIC PAGE ==========
+// ========== PUBLIC ==========
 function showPublicPage() {
     document.getElementById('publicPage').style.display = 'block';
     document.getElementById('loginPage').style.display = 'none';
     document.getElementById('mainApp').style.display = 'none';
     initData();
 }
-
 function showAdminLogin() {
     document.getElementById('publicPage').style.display = 'none';
     document.getElementById('loginPage').style.display = 'flex';
@@ -754,32 +353,32 @@ function showAdminLogin() {
 
 function renderPublic() {
     document.getElementById('displayBasePrice').innerHTML = rupiah(basePrice) + ' <small>/bulan</small>';
-    
     const container = document.getElementById('publicFacilities');
     if (container) {
         container.innerHTML = '';
-        if (facilities.length === 0) {
-            container.innerHTML = '<p style="color:#999;">Belum ada fasilitas tambahan</p>';
-        } else {
-            facilities.forEach((fac, idx) => {
-                container.innerHTML += `<div class="facility-item" onclick="toggleFacility(${idx})" id="pubFac_${idx}">
-                    <i class="fas fa-${fac.icon}"></i>
-                    <div><div class="facility-name">${fac.name}</div><div class="facility-price">+${rupiah(fac.price)}</div></div>
-                </div>`;
-            });
-        }
+        facilities.forEach((fac, idx) => {
+            container.innerHTML += `<div class="facility-item" onclick="toggleFacility(${idx})" id="pubFac_${idx}">
+                <i class="fas fa-${fac.icon}"></i>
+                <div><div class="facility-name">${fac.name}</div><div class="facility-price">+${rupiah(fac.price)}</div></div>
+            </div>`;
+        });
     }
-    
     const available = rooms.filter(r => !r.occupied);
     const roomsContainer = document.getElementById('availableRoomsList');
     if (roomsContainer) {
-        if (available.length === 0) {
-            roomsContainer.innerHTML = '<span style="color:#999;">Tidak ada kamar kosong</span>';
-        } else {
-            roomsContainer.innerHTML = available.map(r => `<span class="room-badge">Kamar ${r.number}</span>`).join('');
-        }
+        roomsContainer.innerHTML = '';
+        available.forEach(r => {
+            const imgHtml = r.image_path 
+                ? `<img src="${r.image_path}" alt="Kamar ${r.number}">` 
+                : `<div class="no-image">📷 Tidak ada foto</div>`;
+            roomsContainer.innerHTML += `
+                <div class="room-card">
+                    ${imgHtml}
+                    <div class="room-label">Kamar ${r.number}</div>
+                </div>
+            `;
+        });
     }
-    
     const roomSelect = document.getElementById('regRoom');
     if (roomSelect) {
         roomSelect.innerHTML = '<option value="">Pilih Kamar</option>';
@@ -791,17 +390,16 @@ function renderPublic() {
 }
 
 function toggleFacility(idx) {
-    const element = document.getElementById(`pubFac_${idx}`);
+    const el = document.getElementById(`pubFac_${idx}`);
     if (currentSelectedFacilities.includes(idx)) {
         currentSelectedFacilities = currentSelectedFacilities.filter(i => i !== idx);
-        element.classList.remove('selected');
+        el.classList.remove('selected');
     } else {
         currentSelectedFacilities.push(idx);
-        element.classList.add('selected');
+        el.classList.add('selected');
     }
     updateTotalPublic();
 }
-
 function updateTotalPublic() {
     let total = basePrice;
     currentSelectedFacilities.forEach(idx => { total += facilities[idx].price; });
@@ -813,22 +411,18 @@ async function submitRegistration() {
     const name = document.getElementById('regName').value.trim();
     const phone = document.getElementById('regPhone').value.trim();
     const roomNum = parseInt(document.getElementById('regRoom').value);
-    
     if (!name) { showToast('Nama harus diisi!', true); return; }
     if (!roomNum) { showToast('Pilih kamar!', true); return; }
-    
     const room = rooms.find(r => r.number === roomNum);
     if (room.occupied) { showToast('Kamar sudah terisi!', true); return; }
-    
     const selectedFac = currentSelectedFacilities.map(idx => facilities[idx]);
     let totalPrice = basePrice;
     selectedFac.forEach(f => totalPrice += f.price);
-    
     try {
-        await apiCall('addRegistration', 'POST', {
-            name, phone, requestedRoom: roomNum,
-            facilities: selectedFac,
-            totalPrice: totalPrice
+        await fetch(`${API}?action=addRegistration`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, phone, requestedRoom: roomNum, facilities: selectedFac, totalPrice })
         });
         showToast('Pendaftaran berhasil dikirim!');
         document.getElementById('regName').value = '';
@@ -839,11 +433,11 @@ async function submitRegistration() {
         updateTotalPublic();
         await initData();
     } catch (e) {
-        showToast('Gagal mendaftar: ' + e.message, true);
+        showToast('Gagal: ' + e.message, true);
     }
 }
 
-// ========== ADMIN LOGIN ==========
+// ========== ADMIN ==========
 function doLogin() {
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
@@ -857,12 +451,8 @@ function doLogin() {
         showToast('Username atau password salah!', true);
     }
 }
+function doLogout() { showPublicPage(); }
 
-function doLogout() {
-    showPublicPage();
-}
-
-// ========== ADMIN DASHBOARD ==========
 function renderDashboard() {
     const occupied = rooms.filter(r => r.occupied).length;
     const totalIncome = payments.reduce((sum, p) => sum + p.amount, 0);
@@ -883,6 +473,39 @@ function renderRooms() {
             </div>`;
         });
     }
+    // Isi dropdown upload
+    const select = document.getElementById('uploadRoomNumber');
+    if (select) {
+        select.innerHTML = '<option value="">-- Pilih Kamar --</option>';
+        rooms.forEach(room => {
+            select.innerHTML += `<option value="${room.number}">Kamar ${room.number}</option>`;
+        });
+    }
+    // Handle form upload
+    const form = document.getElementById('uploadRoomImageForm');
+    if (form) {
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            const roomNum = document.getElementById('uploadRoomNumber').value;
+            if (!roomNum) { showToast('Pilih kamar!', true); return; }
+            const formData = new FormData(this);
+            formData.append('room_number', roomNum);
+            fetch(`${API}?action=updateRoomImage`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    showToast('Foto kamar berhasil diupload');
+                    initData();
+                } else {
+                    showToast(data.error || 'Gagal upload', true);
+                }
+            })
+            .catch(err => showToast('Error: ' + err.message, true));
+        };
+    }
 }
 
 async function quickAddTenant(roomNum) {
@@ -891,13 +514,11 @@ async function quickAddTenant(roomNum) {
     const name = prompt('Nama penyewa:');
     if (!name) return;
     const phone = prompt('No. telepon:') || '';
-    
     try {
-        await apiCall('addTenant', 'POST', {
-            name, phone, room: roomNum,
-            startMonth: getCurrentMonth(),
-            facilities: [],
-            paidMonths: []
+        await fetch(`${API}?action=addTenant`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, phone, room: roomNum, startMonth: getCurrentMonth(), facilities: [], paidMonths: [] })
         });
         await initData();
         showToast(`${name} menyewa kamar ${roomNum}`);
@@ -910,7 +531,7 @@ function renderFacilitiesAdmin() {
     const container = document.getElementById('facilitiesList');
     if (container) {
         if (facilities.length === 0) {
-            container.innerHTML = '<p style="color: #999;">Belum ada fasilitas. Klik "Tambah Fasilitas" untuk menambahkan.</p>';
+            container.innerHTML = '<p style="color:#999;">Belum ada fasilitas. Klik "Tambah Fasilitas" untuk menambahkan.</p>';
         } else {
             container.innerHTML = '';
             facilities.forEach((fac) => {
@@ -932,7 +553,7 @@ async function removeFacility(id) {
     const fac = facilities.find(f => f.id === id);
     if (!fac) return;
     if (confirm(`Hapus fasilitas "${fac.name}"?`)) {
-        await apiCall('deleteFacility', 'DELETE', null, { id: id });
+        await fetch(`${API}?action=deleteFacility&id=${id}`, { method: 'DELETE' });
         await initData();
         showToast('Fasilitas dihapus');
     }
@@ -943,8 +564,11 @@ async function addFacility() {
     const price = parseInt(document.getElementById('newFacilityPrice').value);
     if (!name) { showToast('Masukkan nama fasilitas!', true); return; }
     if (isNaN(price) || price <= 0) { showToast('Masukkan harga yang valid!', true); return; }
-    
-    await apiCall('addFacility', 'POST', { name, price, icon: 'plus-circle' });
+    await fetch(`${API}?action=addFacility`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, price, icon: 'plus-circle' })
+    });
     document.getElementById('newFacilityName').value = '';
     document.getElementById('newFacilityPrice').value = '';
     await initData();
@@ -954,8 +578,11 @@ async function addFacility() {
 async function updateBasePrice() {
     const newPrice = parseInt(document.getElementById('basePriceInput').value);
     if (newPrice > 0) {
-        await apiCall('updateBasePrice', 'POST', { price: newPrice });
-        basePrice = newPrice;
+        await fetch(`${API}?action=updateBasePrice`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ price: newPrice })
+        });
         await initData();
         showToast('Harga dasar diperbarui menjadi ' + rupiah(basePrice));
     } else {
@@ -963,16 +590,15 @@ async function updateBasePrice() {
     }
 }
 
-// ========== TENANTS ==========
 function renderTenantFacilitiesCheckbox() {
     const container = document.getElementById('tenantFacilitiesCheckbox');
     if (container) {
         if (facilities.length === 0) {
-            container.innerHTML = '<p style="color: #999;">Belum ada fasilitas tambahan. Tambah dulu di menu Fasilitas.</p>';
+            container.innerHTML = '<p style="color:#999;">Belum ada fasilitas tambahan. Tambah dulu di menu Fasilitas.</p>';
         } else {
             container.innerHTML = '';
             facilities.forEach((fac, idx) => {
-                container.innerHTML += `<label style="display: flex; align-items: center; gap: 8px; margin-right: 15px; margin-bottom: 8px;">
+                container.innerHTML += `<label style="display:flex; align-items:center; gap:8px; margin-right:15px; margin-bottom:8px;">
                     <input type="checkbox" value="${idx}" onchange="updateTenantTotal()"> ${fac.name} (+${rupiah(fac.price)})
                 </label>`;
             });
@@ -980,18 +606,18 @@ function renderTenantFacilitiesCheckbox() {
     }
     updateTenantTotal();
 }
-
 function updateTenantTotal() {
     let total = basePrice;
-    const checkboxes = document.querySelectorAll('#tenantFacilitiesCheckbox input:checked');
-    checkboxes.forEach(cb => { total += facilities[parseInt(cb.value)].price; });
+    document.querySelectorAll('#tenantFacilitiesCheckbox input:checked').forEach(cb => {
+        total += facilities[parseInt(cb.value)].price;
+    });
     document.getElementById('previewTotalPrice').innerHTML = rupiah(total);
 }
-
 function getSelectedFacilities() {
     const selected = [];
-    const checkboxes = document.querySelectorAll('#tenantFacilitiesCheckbox input:checked');
-    checkboxes.forEach(cb => { selected.push(facilities[parseInt(cb.value)]); });
+    document.querySelectorAll('#tenantFacilitiesCheckbox input:checked').forEach(cb => {
+        selected.push(facilities[parseInt(cb.value)]);
+    });
     return selected;
 }
 
@@ -1001,16 +627,18 @@ async function addTenant() {
     const roomNum = parseInt(document.getElementById('newRoom').value);
     if (!name) { showToast('Nama harus diisi!', true); return; }
     if (!roomNum) { showToast('Pilih kamar!', true); return; }
-    
     const room = rooms.find(r => r.number === roomNum);
     if (room.occupied) { showToast('Kamar sudah terisi!', true); return; }
-    
     try {
-        await apiCall('addTenant', 'POST', {
-            name, phone, room: roomNum,
-            startMonth: getCurrentMonth(),
-            facilities: getSelectedFacilities(),
-            paidMonths: []
+        await fetch(`${API}?action=addTenant`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name, phone, room: roomNum,
+                startMonth: getCurrentMonth(),
+                facilities: getSelectedFacilities(),
+                paidMonths: []
+            })
         });
         await initData();
         showToast(`${name} menyewa kamar ${roomNum}`);
@@ -1029,10 +657,9 @@ function getTenantMonthlyPrice(tenant) {
     if (tenant.facilities) tenant.facilities.forEach(f => total += f.price);
     return total;
 }
-
 function getTenantStatus(tenant) {
     const current = getCurrentMonth();
-    let paid = tenant.paidMonths || [];
+    const paid = tenant.paidMonths || [];
     let unpaid = [];
     for (let m = tenant.startMonth; m <= current; m++) if (!paid.includes(m)) unpaid.push(m);
     const monthlyPrice = getTenantMonthlyPrice(tenant);
@@ -1048,8 +675,6 @@ function renderTenants() {
             const status = getTenantStatus(tenant);
             const monthlyPrice = getTenantMonthlyPrice(tenant);
             const facText = tenant.facilities?.map(f => f.name).join(', ') || '-';
-            const realIdx = tenants.indexOf(tenant);
-            
             tbody.innerHTML += `<tr>
                 <td>${tenant.room}</td>
                 <td>${tenant.name}</td>
@@ -1057,13 +682,12 @@ function renderTenants() {
                 <td>${rupiah(monthlyPrice)}</td>
                 <td><span class="badge ${status.isLunas ? 'badge-success' : 'badge-warning'}">${status.isLunas ? 'Lunas' : 'Tunggak ' + status.unpaidCount}</span></td>
                 <td>
-                    <button class="btn btn-primary" onclick="bukaModalBayar(${realIdx})">Bayar</button>
-                    <button class="btn btn-danger" onclick="hapusPenyewa(${realIdx})">Keluar</button>
+                    <button class="btn btn-primary" onclick="bukaModalBayar(${idx})">Bayar</button>
+                    <button class="btn btn-danger" onclick="hapusPenyewa(${idx})">Keluar</button>
                 </td>
             </tr>`;
         });
     }
-    
     const roomSelect = document.getElementById('newRoom');
     if (roomSelect) {
         roomSelect.innerHTML = '<option value="">Pilih Kamar</option>';
@@ -1073,7 +697,6 @@ function renderTenants() {
     }
 }
 
-// ========== PAYMENTS ==========
 function renderPayments() {
     const tbody = document.getElementById('paymentsBody');
     if (tbody) {
@@ -1083,14 +706,13 @@ function renderPayments() {
                 <td>${new Date(p.date).toLocaleDateString()}</td>
                 <td>${p.tenantName}</td>
                 <td>Kamar ${p.room}</td>
-                <td>${p.months.map(m => ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'][m-1]).join(', ')}</td>
+                <td>${p.months.map(m => MONTH_NAMES[m-1]).join(', ')}</td>
                 <td>${rupiah(p.amount)}</td>
             </tr>`;
         });
     }
 }
 
-// ========== REGISTRATIONS ==========
 function renderRegistrations() {
     const tbody = document.getElementById('registrationsBody');
     if (tbody) {
@@ -1114,17 +736,16 @@ function renderRegistrations() {
 
 async function approveRegistration(id) {
     try {
-        await apiCall('approveRegistration', 'GET', null, { id: id });
+        await fetch(`${API}?action=approveRegistration&id=${id}`, { method: 'GET' });
         await initData();
         showToast('Pendaftaran disetujui');
     } catch (e) {
         showToast('Gagal: ' + e.message, true);
     }
 }
-
 async function rejectRegistration(id) {
     try {
-        await apiCall('rejectRegistration', 'GET', null, { id: id });
+        await fetch(`${API}?action=rejectRegistration&id=${id}`, { method: 'GET' });
         await initData();
         showToast('Pendaftaran ditolak');
     } catch (e) {
@@ -1133,28 +754,21 @@ async function rejectRegistration(id) {
 }
 
 // ========== MODAL PEMBAYARAN ==========
-let pendingData = { tenantIdx: null, selectedMonths: [], total: 0, monthlyPrice: 0 };
-
 function bukaModalBayar(idx) {
     const tenant = tenants[idx];
-    if (!tenant) return;
     const status = getTenantStatus(tenant);
     if (status.unpaidCount === 0) { showToast('Sudah lunas!', true); return; }
-    
     const monthlyPrice = getTenantMonthlyPrice(tenant);
-    pendingData = { tenantIdx: idx, selectedMonths: [], total: 0, monthlyPrice: monthlyPrice };
-    
+    pendingData = { tenantIdx: idx, selectedMonths: [], total: 0, monthlyPrice };
     document.getElementById('modalTenantInfo').innerHTML = `<strong>${tenant.name}</strong> - Kamar ${tenant.room}<br>Total per bulan: ${rupiah(monthlyPrice)}`;
-    
     let html = '';
     status.unpaidMonths.forEach(m => {
-        html += `<label class="checkbox-item"><input type="checkbox" value="${m}" onchange="updateModalTotal()"> ${['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'][m-1]}</label>`;
+        html += `<label class="checkbox-item"><input type="checkbox" value="${m}" onchange="updateModalTotal()"> ${MONTH_NAMES[m-1]}</label>`;
     });
     document.getElementById('bulanCheckbox').innerHTML = html;
     document.getElementById('modalTotal').innerHTML = 'Total: Rp 0';
     document.getElementById('paymentModal').style.display = 'flex';
 }
-
 function updateModalTotal() {
     const checkboxes = document.querySelectorAll('#bulanCheckbox input:checked');
     pendingData.selectedMonths = [];
@@ -1162,7 +776,6 @@ function updateModalTotal() {
     pendingData.total = pendingData.selectedMonths.length * pendingData.monthlyPrice;
     document.getElementById('modalTotal').innerHTML = `Total: ${rupiah(pendingData.total)}`;
 }
-
 function closePaymentModal() { document.getElementById('paymentModal').style.display = 'none'; }
 function closeQrisModal() { document.getElementById('qrisModal').style.display = 'none'; document.getElementById('qrcode').innerHTML = ''; }
 
@@ -1181,15 +794,17 @@ async function prosesQRIS() {
 async function prosesCash() {
     if (pendingData.selectedMonths.length === 0) { showToast('Pilih bulan!', true); return; }
     const tenant = tenants[pendingData.tenantIdx];
-    if (!tenant) return;
-    
     try {
-        await apiCall('addPayment', 'POST', {
-            tenantName: tenant.name,
-            room: tenant.room,
-            months: pendingData.selectedMonths,
-            amount: pendingData.total,
-            method: 'cash'
+        await fetch(`${API}?action=addPayment`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                tenantName: tenant.name,
+                room: tenant.room,
+                months: pendingData.selectedMonths,
+                amount: pendingData.total,
+                method: 'cash'
+            })
         });
         await initData();
         showToast(`Pembayaran tunai ${rupiah(pendingData.total)} berhasil!`);
@@ -1198,17 +813,19 @@ async function prosesCash() {
         showToast('Gagal: ' + e.message, true);
     }
 }
-
 async function confirmQrisPayment() {
     const tenant = tenants[pendingData.tenantIdx];
-    if (!tenant) return;
     try {
-        await apiCall('addPayment', 'POST', {
-            tenantName: tenant.name,
-            room: tenant.room,
-            months: pendingData.selectedMonths,
-            amount: pendingData.total,
-            method: 'qris'
+        await fetch(`${API}?action=addPayment`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                tenantName: tenant.name,
+                room: tenant.room,
+                months: pendingData.selectedMonths,
+                amount: pendingData.total,
+                method: 'qris'
+            })
         });
         await initData();
         showToast(`Pembayaran QRIS ${rupiah(pendingData.total)} berhasil!`);
@@ -1220,15 +837,10 @@ async function confirmQrisPayment() {
 
 async function hapusPenyewa(idx) {
     const tenant = tenants[idx];
-    if (!tenant) return;
     const status = getTenantStatus(tenant);
     if (status.due > 0 && !confirm(`${tenant.name} masih punya tunggakan ${rupiah(status.due)}. Hapus tetap?`)) return;
-    
-    const tenantId = tenant.id;
-    if (!tenantId) { showToast('ID penyewa tidak ditemukan', true); return; }
-    
     try {
-        await apiCall('deleteTenant', 'DELETE', null, { id: tenantId });
+        await fetch(`${API}?action=deleteTenant&id=${tenant.id}`, { method: 'DELETE' });
         await initData();
         showToast(`${tenant.name} telah checkout`);
     } catch (e) {
@@ -1236,19 +848,16 @@ async function hapusPenyewa(idx) {
     }
 }
 
-// ========== NAVIGASI ==========
 function showPage(page) {
-    const pages = ['dashboardPage', 'roomsPage', 'facilitiesPage', 'tenantsPage', 'paymentsPage', 'registrationsPage'];
+    const pages = ['dashboardPage','roomsPage','facilitiesPage','tenantsPage','paymentsPage','registrationsPage'];
     pages.forEach(p => {
         const el = document.getElementById(p);
         if (el) el.classList.add('hidden');
     });
     const activePage = document.getElementById(page + 'Page');
     if (activePage) activePage.classList.remove('hidden');
-    
-    const titles = { dashboard: 'Dashboard', rooms: 'Kamar', facilities: 'Fasilitas', tenants: 'Penyewa', payments: 'Riwayat', registrations: 'Pendaftaran' };
+    const titles = { dashboard:'Dashboard', rooms:'Kamar', facilities:'Fasilitas', tenants:'Penyewa', payments:'Riwayat', registrations:'Pendaftaran' };
     document.getElementById('pageTitle').innerText = titles[page];
-    
     if (page === 'tenants') { renderTenants(); renderTenantFacilitiesCheckbox(); }
     else if (page === 'payments') renderPayments();
     else if (page === 'registrations') renderRegistrations();
@@ -1257,7 +866,6 @@ function showPage(page) {
     else if (page === 'facilities') renderFacilitiesAdmin();
 }
 
-// ========== START ==========
 showPublicPage();
 </script>
 </body>

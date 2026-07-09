@@ -83,6 +83,7 @@ $rooms = array_map(function($r) {
                 ];
             }
             
+            
             // Payments
             $payments = [];
             $stmt = $pdo->query("
